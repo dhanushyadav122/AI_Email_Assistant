@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Email Assistant</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            color: #444;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        textarea {
+            height: 100px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .output-box {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            white-space: pre-wrap;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 30px;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 5px;
+            color: #333;
+        }
+        .nav-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .nav-links a {
+            margin: 0 15px;
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AI Email Assistant</h1>
+
+    <!-- Compose Email -->
+    <form method="POST" action="/">
+        <div class="form-group">
+            <label for="email_to">Recipient Email</label>
+            <input type="email" name="email_to" id="email_to" value="{{ email_to }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" name="subject" id="subject" value="{{ email_subject }}" required>
+        </div>
+
+        <div class="form-group">
+            <label for="body">Content / Idea</label>
+            <textarea name="body" id="body" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="tone">Tone</label>
+            <select name="tone" id="tone">
+                <option value="friendly" {% if tone=='friendly' %}selected{% endif %}>Friendly</option>
+                <option value="formal" {% if tone=='formal' %}selected{% endif %}>Formal</option>
+                <option value="apologetic" {% if tone=='apologetic' %}selected{% endif %}>Apologetic</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="language">Language</label>
+            <select name="language" id="language">
+                <option value="english" {% if language=='english' %}selected{% endif %}>English</option>
+                <option value="hindi" {% if language=='hindi' %}selected{% endif %}>Hindi</option>
+                <option value="telugu" {% if language=='telugu' %}selected{% endif %}>Telugu</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="mail_type">Mail Type</label>
+            <select name="mail_type" id="mail_type">
+                <option value="personal" {% if mail_type=='personal' %}selected{% endif %}>Personal</option>
+                <option value="official" {% if mail_type=='official' %}selected{% endif %}>Official</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label><input type="checkbox" name="send_email"> Send email directly</label>
+        </div>
+
+        <button type="submit">Generate Email</button>
+    </form>
+
+    {% if suggestion %}
+    <div class="section-title">AI Suggested Email:</div>
+    <div class="output-box">{{ suggestion }}</div>
+    {% endif %}
+
+    {% if send_status %}
+    <div class="output-box" style="background:#e0f7e0; border:1px solid #b2dfb2;">{{ send_status }}</div>
+    {% endif %}
+
+    <!-- Auto Reply Section -->
+    <div class="section-title">Auto Reply Assistant</div>
+    <form method="POST" action="/auto_reply">
+        <div class="form-group">
+            <label for="incoming_email">Incoming Email Content</label>
+            <textarea name="incoming_email" id="incoming_email" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="tone">Tone</label>
+            <select name="tone">
+                <option value="friendly">Friendly</option>
+                <option value="formal">Formal</option>
+                <option value="apologetic">Apologetic</option>
+            </select>
+        </div>
+        <button type="submit">Generate Auto Reply</button>
+    </form>
+
+    {% if auto_reply %}
+    <div class="section-title">AI Auto Reply:</div>
+    <div class="output-box">{{ auto_reply }}</div>
+    {% endif %}
+
+    <!-- Navigation -->
+    <div class="nav-links">
+        <a href="/">Home</a> | 
+        <a href="/history">View History</a>
+    </div>
+
+</div>
+</body>
+</html>

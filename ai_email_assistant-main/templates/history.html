@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email History</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            padding: 20px;
+            color: #333;
+        }
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        .btn-container {
+            text-align: center;
+            margin: 20px;
+        }
+        button {
+            background: #f44336;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Email History</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Type</th>
+                <th>Recipient</th>
+                <th>Subject</th>
+                <th>Body</th>
+                <th>Sentiment</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] }}</td>
+                <td>{{ row[2] }}</td>
+                <td>{{ row[3] }}</td>
+                <td>{{ row[4] }}</td>
+                <td>{{ row[6] }}</td>
+                <td>{{ row[5] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="btn-container">
+        <form action="/clear_history" method="POST">
+            <button type="submit">Clear History</button>
+        </form>
+    </div>
+</body>
+<head>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        .history-item {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .history-item strong { color: #555; }
+    </style>
+</head>
+<body>
+    <h1>Email History</h1>
+    {% if history_data %}
+        {% for email in history_data %}
+            <div class="history-item">
+                <p><strong>To:</strong> {{ email.to }}</p>
+                <p><strong>Subject:</strong> {{ email.subject }}</p>
+                <p><strong>Tone:</strong> {{ email.tone }}</p>
+                <p><strong>Language:</strong> {{ email.language }}</p>
+                <p><strong>Mail Type:</strong> {{ email.mail_type }}</p>
+                <p><strong>Body:</strong></p>
+                <pre>{{ email.body }}</pre>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No history found.</p>
+    {% endif %}
+    <br>
+    <a href="/">⬅ Back to Home</a>
+</body>
+</html>
+

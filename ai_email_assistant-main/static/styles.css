@@ -1,0 +1,129 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f7fa;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 700px;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #1a1a1a;
+    margin-bottom: 10px;
+}
+
+p {
+    text-align: center;
+    color: #666;
+    font-size: 16px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    margin-bottom: 10px;
+}
+
+textarea {
+    width: 100%;
+    height: 140px;
+    padding: 15px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #5e9ed6;
+}
+
+button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #5e9ed6;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background-color: #4a8ac3;
+}
+
+.output-box {
+    margin-top: 30px;
+    background-color: #eef4fa;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #d4e2f0;
+}
+
+.output-box h2 {
+    margin-top: 0;
+    color: #333;
+}
+
+.output-box p {
+    color: #444;
+    font-size: 15px;
+    white-space: pre-wrap;
+}
+input[type="text"], input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    font-size: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #5e9ed6;
+    outline: none;
+}
+.output-box button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    font-size: 14px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.output-box button:hover {
+    background-color: #3e8e41;
+}
+button[name="send_email"] {
+    background-color: #008cff;
+    margin-top: 10px;
+}
+
+button[name="send_email"]:hover {
+    background-color: #006ccc;
+}
