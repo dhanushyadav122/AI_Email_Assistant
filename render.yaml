@@ -1,9 +1,13 @@
 services:
   - type: web
-    name: ai-email-assistant
+    name: ai_email_assistant
     env: python
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app:app
     envVars:
-      - key: PORT
-        value: 5000
+      - key: YOUR_EMAIL
+        value: your_email@example.com
+      - key: YOUR_APP_PASSWORD
+        value: your_app_password
+      - key: OPENROUTER_API_KEY
+        value: your_openrouter_api_key
