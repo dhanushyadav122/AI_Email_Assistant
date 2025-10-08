@@ -1,19 +1,29 @@
-#  AI Email Assistant
+AI Email Assistant
 
-An **AI-powered Email Assistant** built using **Flask**, **HTML**, and the **OpenRouter API**.  
-It helps users **generate professional emails**, **auto-reply**, and **analyze email tone** — just like Google Gemini or ChatGPT but in your own web app.
+An intelligent email helper built using Python (Flask) and OpenAI/OpenRouter API, capable of generating, analyzing, and managing emails automatically — like a mini-Gemini for your inbox.
 
----
+ Features
 
-##  Features
+ AI-generated email writing
 
- **AI Email Generation** – Write email content based on subject, tone, and language.  
- **Auto-Reply Assistant** – Reads incoming mail and generates a smart response.  
- **History View** – View previously generated emails.  
- **Multi-Tone Options** – Choose from Friendly, Formal, or Apologetic.  
- **Language Support** – English, Hindi, Telugu (can add more).  
- **Email Sending** – Integrated with Gmail SMTP (secure using App Password).  
+ Tone and language customization
 
+ Auto-reply and suggestion system
+
+ Email summarization
+
+ Email history tracking (JSON-based)
+
+ Beautiful web interface (HTML, CSS, Flask)
+
+ Tech Stack
+Category	Tools
+Backend	Flask (Python)
+Frontend	HTML, CSS
+API	OpenRouter AI / GPT
+Storage	JSON (local)
+Deployment	Render (Free Hosting)
+Version Control	Git + GitHub
 ---
 
 # Project Screenshots
@@ -27,14 +37,7 @@ It helps users **generate professional emails**, **auto-reply**, and **analyze e
 #  Email History
 ![History](History.png)
 
-## Tech Stack
 
-- **Backend:** Flask (Python)
-- **Frontend:** HTML, CSS, Bootstrap
-- **AI Engine:** OpenRouter API (Mistral model)
-- **Database:** JSON (for storing history)
-- **Environment Variables:** Python-dotenv  
-- **Deployment:** Render (Cloud Hosting)
 
 ---
 
