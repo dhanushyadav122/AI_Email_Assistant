@@ -16,6 +16,17 @@ It helps users **generate professional emails**, **auto-reply**, and **analyze e
 
 ---
 
+# Project Screenshots
+
+#  Home Page
+![Home Page](Home%20page.png)
+
+#  Output Screen
+![Output](output.png)
+
+#  Email History
+![History](History.png)
+
 ## Tech Stack
 
 - **Backend:** Flask (Python)
