@@ -125,7 +125,7 @@ def auto_reply():
         "Content-Type": "application/json"
     }
     payload = {
-        "model": "mistralai/mistral-7b-instruct:free",
+        "model": "openrouter/free",
         "messages": [
             {"role": "system", "content": "You are a helpful email auto-reply assistant."},
             {"role": "user", "content": prompt}
