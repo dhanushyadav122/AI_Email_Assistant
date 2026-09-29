@@ -61,7 +61,7 @@ Content: {body_idea}"""
             "Content-Type": "application/json"
         }
         payload = {
-            "model": "mistralai/mistral-7b-instruct:free",
+            "model": "openrouter/free",
             "messages": [
                 {"role": "system", "content": "You are a helpful email assistant."},
                 {"role": "user", "content": prompt}
