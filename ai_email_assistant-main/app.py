@@ -85,38 +85,37 @@ Content: {body_idea}"""
                 "tone": tone,
                 "language": language,
                 "mail_type": mail_type
-            })
+                       })
 
-     # Send email if user checked the box
-     if send_email and suggestion and not suggestion.startswith("❌"):
-    try:
-        brevo_response = requests.post(
-            "https://api.brevo.com/v3/smtp/email",
-            headers={
-                "api-key": os.environ.get("BREVO_API_KEY"),
-                "Content-Type": "application/json"
-            },
-            json={
-                "sender": {"email": YOUR_EMAIL},
-                "to": [{"email": email_to}],
-                "subject": email_subject,
-                "textContent": suggestion
-            }
-        )
-        brevo_response.raise_for_status()
-        send_status = "✅ Email sent successfully!"
-    except Exception as e:
-        send_status = f"❌ Failed to send email: {str(e)}"
-       
+        # Send email if user checked the box
+        if send_email and suggestion and not suggestion.startswith("❌"):
+            try:
+                brevo_response = requests.post(
+                    "https://api.brevo.com/v3/smtp/email",
+                    headers={
+                        "api-key": os.environ.get("BREVO_API_KEY"),
+                        "Content-Type": "application/json"
+                    },
+                    json={
+                        "sender": {"email": YOUR_EMAIL},
+                        "to": [{"email": email_to}],
+                        "subject": email_subject,
+                        "textContent": suggestion
+                    }
+                )
+                brevo_response.raise_for_status()
+                send_status = "✅ Email sent successfully!"
+            except Exception as e:
+                send_status = f"❌ Failed to send email: {str(e)}"
 
-     return render_template("index.html",
-                           suggestion=suggestion,
-                           email_to=email_to,
-                           email_subject=email_subject,
-                           send_status=send_status,
-                           tone=tone,
-                           language=language,
-                           mail_type=mail_type)
+        return render_template("index.html",
+                               suggestion=suggestion,
+                               email_to=email_to,
+                               email_subject=email_subject,
+                               send_status=send_status,
+                               tone=tone,
+                               language=language,
+                               mail_type=mail_type)
 
 @app.route("/auto_reply", methods=["POST"])
 def auto_reply():
