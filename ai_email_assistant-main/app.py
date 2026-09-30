@@ -88,7 +88,7 @@ Content: {body_idea}"""
             })
 
      # Send email if user checked the box
-if send_email and suggestion and not suggestion.startswith("❌"):
+     if send_email and suggestion and not suggestion.startswith("❌"):
     try:
         brevo_response = requests.post(
             "https://api.brevo.com/v3/smtp/email",
@@ -109,7 +109,7 @@ if send_email and suggestion and not suggestion.startswith("❌"):
         send_status = f"❌ Failed to send email: {str(e)}"
        
 
-    return render_template("index.html",
+     return render_template("index.html",
                            suggestion=suggestion,
                            email_to=email_to,
                            email_subject=email_subject,
