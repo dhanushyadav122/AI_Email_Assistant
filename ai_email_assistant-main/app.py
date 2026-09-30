@@ -87,21 +87,26 @@ Content: {body_idea}"""
                 "mail_type": mail_type
             })
 
-        # Send email if user checked the box
-        if send_email and suggestion and not suggestion.startswith("❌"):
-            try:
-                msg = MIMEText(suggestion)
-                msg['Subject'] = email_subject
-                msg['From'] = YOUR_EMAIL
-                msg['To'] = email_to
-
-                server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-                server.login(YOUR_EMAIL, YOUR_APP_PASSWORD)
-                server.sendmail(YOUR_EMAIL, email_to, msg.as_string())
-                server.quit()
-                send_status = "✅ Email sent successfully!"
-            except Exception as e:
-                send_status = f"❌ Failed to send email: {str(e)}"
+       # Send email if user checked the box
+if send_email and suggestion and not suggestion.startswith("❌"):
+    try:
+        brevo_response = requests.post(
+            "https://api.brevo.com/v3/smtp/email",
+            headers={
+                "api-key": os.environ.get("BREVO_API_KEY"),
+                "Content-Type": "application/json"
+            },
+            json={
+                "sender": {"email": YOUR_EMAIL},
+                "to": [{"email": email_to}],
+                "subject": email_subject,
+                "textContent": suggestion
+            }
+        )
+        brevo_response.raise_for_status()
+        send_status = "✅ Email sent successfully!"
+    except Exception as e:
+        send_status = f"❌ Failed to send email: {str(e)}"
 
     return render_template("index.html",
                            suggestion=suggestion,
