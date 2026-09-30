@@ -108,7 +108,7 @@ Content: {body_idea}"""
             except Exception as e:
                 send_status = f"❌ Failed to send email: {str(e)}"
 
-        return render_template("index.html",
+         return render_template("index.html",
                                suggestion=suggestion,
                                email_to=email_to,
                                email_subject=email_subject,
