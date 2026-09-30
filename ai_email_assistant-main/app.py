@@ -107,11 +107,7 @@ if send_email and suggestion and not suggestion.startswith("❌"):
         send_status = "✅ Email sent successfully!"
     except Exception as e:
         send_status = f"❌ Failed to send email: {str(e)}"
-        )
-        brevo_response.raise_for_status()
-        send_status = "✅ Email sent successfully!"
-    except Exception as e:
-        send_status = f"❌ Failed to send email: {str(e)}"
+       
 
     return render_template("index.html",
                            suggestion=suggestion,
